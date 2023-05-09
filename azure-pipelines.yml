@@ -22,18 +22,16 @@ steps:
 - script: |
     python -m pip install --upgrade pip
     pip install -r requirements.txt
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   displayName: 'Install dependencies'
 
-- bash: |
-    set -e
-    sudo xcode-select --switch /Applications/Xcode_10.2.app/Contents/Developer
-    brew update
-    HOMEBREW_TAP_DIR="/usr/local/Homebrew/Library/Taps/pingidentity/homebrew-devops"
-    mkdir -p "$HOMEBREW_TAP_DIR"
-    rm -rf "$HOMEBREW_TAP_DIR"
-    ln -s "$PWD" "$HOMEBREW_TAP_DIR"
+- script: |
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  displayName: 'Install homebrew'
+
+- script: 
     brew install pandoc
-    displayName: Run brew install pandoc
+  displayName: 'Install pandoc'
 
 - script: 
     make html

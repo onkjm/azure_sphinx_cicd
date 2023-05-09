@@ -1,0 +1,28 @@
+<form class="sidebar-search-container" method="get" action="{{ pathto('search') }}" role="search">
+
+<!-- Original version
+  <input class="sidebar-search" placeholder="検索" name="q" aria-label="検索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+-->
+    
+<!-- Overrided version -->
+    <!-- copied from https://github.com/meilisearch/docs-searchbar.js/ -->
+    <!-- <input type="search" id="search-bar-input" /> -->
+    <input type="search" id="search-bar-input" class="sidebar-search" placeholder="検索" />
+    <script src="https://cdn.jsdelivr.net/npm/docs-searchbar.js@latest/dist/cdn/docs-searchbar.min.js"></script>
+    <script>
+      docsSearchBar({
+        hostUrl: 'http://nb.on-test-jhub.com:7700/',
+        apiKey: 'a126673881513146861f959249a5b64b03ced3dae7bffd0f271f37452a508fd7',
+        indexUid: 'myapi',
+        inputSelector: '#search-bar-input',
+        debug: true, // Set debug to true if you want to inspect the dropdown
+        enableDarkMode: 'auto'
+      })
+    </script>
+    
+<!-- Overrided version -->
+    
+</form>
+<div id="searchbox"></div>

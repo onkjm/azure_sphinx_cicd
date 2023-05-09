@@ -1,0 +1,40 @@
+# Python package
+# Create and test a Python package on multiple Python versions.
+# Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/python
+
+trigger:
+- main
+
+pool:
+  vmImage: macOS-latest
+strategy:
+  matrix:
+    Python37:
+      python.version: '3.11'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '$(python.version)'
+  displayName: 'Use Python $(python.version)'
+
+- script: |
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt
+  displayName: 'Install dependencies'
+
+- bash: |
+    set -e
+    sudo xcode-select --switch /Applications/Xcode_10.2.app/Contents/Developer
+    brew update
+    HOMEBREW_TAP_DIR="/usr/local/Homebrew/Library/Taps/pingidentity/homebrew-devops"
+    mkdir -p "$HOMEBREW_TAP_DIR"
+    rm -rf "$HOMEBREW_TAP_DIR"
+    ln -s "$PWD" "$HOMEBREW_TAP_DIR"
+    brew install pandoc
+    displayName: Run brew install pandoc
+
+- script: 
+    make html
+  displayName: 'make html'

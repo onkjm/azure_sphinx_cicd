@@ -8,7 +8,7 @@ trigger:
 
 pool:
 #  vmImage: macOS-latest
-  vmImage: macos
+  vmImage: m2mac
 strategy:
   matrix:
     Python311:

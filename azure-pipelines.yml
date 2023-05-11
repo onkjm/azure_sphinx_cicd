@@ -36,3 +36,9 @@ steps:
 - script: 
     make html
   displayName: 'make html'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/build/html'
+    ArtifactName: 'build_html'
+    publishLocation: 'Container'

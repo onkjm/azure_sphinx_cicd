@@ -7,10 +7,11 @@ trigger:
 - main
 
 pool:
-  vmImage: macOS-latest
+#  vmImage: macOS-latest
+  vmImage: macos
 strategy:
   matrix:
-    Python37:
+    Python311:
       python.version: '3.11'
 
 steps:
@@ -22,7 +23,6 @@ steps:
 - script: |
     python -m pip install --upgrade pip
     pip install -r requirements.txt
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   displayName: 'Install dependencies'
 
 - script: |
@@ -36,6 +36,11 @@ steps:
 - script: 
     make html
   displayName: 'make html'
+
+- script:
+    cp -R $(Agent.BuildDirectory)/s/build/html/* /usr/local/var/www/apidoc/
+    /opt/homebrew/bin/nginx -s reload
+  displayName: 'deploy html'
 
 - task: PublishBuildArtifacts@1
   inputs:

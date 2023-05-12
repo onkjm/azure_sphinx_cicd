@@ -34,6 +34,11 @@ steps:
 #    /opt/homebrew/bin/brew install pandoc
 #  displayName: 'Install pandoc'
 
+- script:
+    export PATH="/opt/homebrew/bin/pandoc:$PATH"
+    which pandoc
+  displayName: 'set path to pandoc'
+
 - script: 
     make html
   displayName: 'make html'
@@ -46,8 +51,17 @@ steps:
     /opt/homebrew/bin/nginx -s reload
   displayName: 'restart nginx'
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Agent.BuildDirectory)/s/build/html'
-    ArtifactName: 'build_html'
-    publishLocation: 'Container'
+- script:
+    export MEILISEARCH_HOST_URL=$(MEI_HOST)
+    export MEILISEARCH_API_KEY=$(MEI_KEY)
+    set
+  displayName: 'set env vars'
+
+- script: 
+    cd docs-scraper
+    git clone https://github.com/meilisearch/docs-scraper
+    cd docs-scraper
+    pip install pipenv
+    pipenv install
+    pipenv run ./docs-scraper ../myapi.json
+  displayName: 'docs scraping'

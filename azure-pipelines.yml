@@ -26,6 +26,10 @@ steps:
     pip install -r requirements.txt
   displayName: 'Install dependencies'
 
+- script: |
+    /bin/bash ./script.sh
+  displayName: 'run script'
+  
 #- script: |
 #    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 #  displayName: 'Install homebrew'
@@ -65,3 +69,4 @@ steps:
     pipenv install
     pipenv run ./docs-scraper ../myapi.json
   displayName: 'docs scraping'
+

@@ -39,9 +39,12 @@ steps:
   displayName: 'make html'
 
 - script:
-    cp -R $(Agent.BuildDirectory)/s/build/html/* /usr/local/var/www/apidoc/
-    /opt/homebrew/bin/nginx -s reload
+    cp -R $(Agent.BuildDirectory)/s/build/html/* /usr/local/var/www/myapi/
   displayName: 'deploy html'
+
+- script:
+    /opt/homebrew/bin/nginx -s reload
+  displayName: 'restart nginx'
 
 - task: PublishBuildArtifacts@1
   inputs:

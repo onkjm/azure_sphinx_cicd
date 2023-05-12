@@ -1,0 +1,24 @@
+{
+  "index_uid": "myapi",
+  "scrape_start_urls": false,
+  "allowed_domains": ["localhost"],
+  "start_urls": [
+      "http://localhost:8080/myapi/"
+  ],
+  "stop_urls": [
+      "hhttp://localhost:8080/myapi/_sources/",
+      "http://localhost:8080/myapi/genindex.html",
+      "http://localhost:8080/myapi/py-modindex.html"
+  ],
+  "selectors": {
+      "default": {
+          "lvl0": ".article-container h1",
+          "lvl1": ".article-container h2",
+          "lvl2": ".article-container h3",
+          "lvl3": ".article-container h4",
+          "lvl4": ".article-container h5",
+          "lvl5": ".article-container h6",
+          "text": ".article-container p, .article-container span"
+      }
+  }  
+}

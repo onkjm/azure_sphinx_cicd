@@ -19,8 +19,8 @@ echo =========================
 echo restart nginx
 echo =========================
 
-export MEILISEARCH_HOST_URL=$(MEI_HOST)
-export MEILISEARCH_API_KEY=$(MEI_KEY)
+export MEILISEARCH_HOST_URL=$1
+export MEILISEARCH_API_KEY=$2
 set
 echo =========================
 echo set env vars
@@ -31,6 +31,7 @@ git clone https://github.com/meilisearch/docs-scraper
 cd docs-scraper
 pip install pipenv
 pipenv install
+ls
 pipenv run ./docs-scraper ../myapi.json
 echo =========================
 echo docs scraping

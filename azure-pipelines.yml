@@ -37,36 +37,3 @@ steps:
 #- script: 
 #    /opt/homebrew/bin/brew install pandoc
 #  displayName: 'Install pandoc'
-
-- script:
-    export PATH="/opt/homebrew/bin/pandoc:$PATH"
-    which pandoc
-  displayName: 'set path to pandoc'
-
-- script: 
-    make html
-  displayName: 'make html'
-
-- script:
-    cp -R $(Agent.BuildDirectory)/s/build/html/* /usr/local/var/www/myapi/
-  displayName: 'deploy html'
-
-- script:
-    /opt/homebrew/bin/nginx -s reload
-  displayName: 'restart nginx'
-
-- script:
-    export MEILISEARCH_HOST_URL=$(MEI_HOST)
-    export MEILISEARCH_API_KEY=$(MEI_KEY)
-    set
-  displayName: 'set env vars'
-
-- script: 
-    cd docs-scraper
-    git clone https://github.com/meilisearch/docs-scraper
-    cd docs-scraper
-    pip install pipenv
-    pipenv install
-    pipenv run ./docs-scraper ../myapi.json
-  displayName: 'docs scraping'
-

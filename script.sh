@@ -9,7 +9,7 @@ echo =========================
 echo make html
 echo =========================
 
-cp -R $(Agent.BuildDirectory)/s/build/html/* /usr/local/var/www/myapi/
+cp -R $1/s/build/html/* /usr/local/var/www/myapi/
 echo =========================
 echo deploy html
 echo =========================
@@ -19,8 +19,8 @@ echo =========================
 echo restart nginx
 echo =========================
 
-export MEILISEARCH_HOST_URL=$1
-export MEILISEARCH_API_KEY=$2
+export MEILISEARCH_HOST_URL=$2
+export MEILISEARCH_API_KEY=$3
 set
 echo =========================
 echo set env vars
@@ -32,7 +32,7 @@ cd docs-scraper
 pip install pipenv
 pipenv install
 ls
-pipenv run ./docs-scraper ../myapi.json
+pipenv run ./docs_scraper ../myapi.json
 echo =========================
 echo docs scraping
 echo =========================

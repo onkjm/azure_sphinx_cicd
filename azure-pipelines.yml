@@ -27,7 +27,7 @@ steps:
   displayName: 'Install dependencies'
 
 - script: |
-    /bin/bash ./script.sh $(MEI_HOST) $(MEI_KEY)
+    /bin/bash ./script.sh $(Agent.BuildDirectory) $(MEI_HOST) $(MEI_KEY)
   displayName: 'run script'
   
 #- script: |

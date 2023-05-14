@@ -6,7 +6,7 @@
       "http://nb.on-test-jhub.com:7700/myapi/"
   ],
   "stop_urls": [
-      "hhttp://nb.on-test-jhub.com:7700/myapi/_sources/",
+      "http://nb.on-test-jhub.com:7700/myapi/_sources/",
       "http://nb.on-test-jhub.com:7700/myapi/genindex.html",
       "http://nb.on-test-jhub.com:7700/myapi/py-modindex.html"
   ],

@@ -1,7 +1,7 @@
 {
   "index_uid": "myapi",
   "scrape_start_urls": false,
-  "allowed_domains": ["nb.on-test-jhub.com:8080"],
+  "allowed_domains": ["nb.on-test-jhub.com"],
   "start_urls": [
       "http://nb.on-test-jhub.com:8080/myapi/"
   ],

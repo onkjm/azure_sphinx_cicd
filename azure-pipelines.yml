@@ -21,19 +21,6 @@ steps:
     versionSpec: '$(python.version)'
   displayName: 'Use Python $(python.version)'
 
-# - script: |
-#     python -m pip install --upgrade pip
-#     pip install -r requirements.txt
-#   displayName: 'Install dependencies'
-
 - script: |
     /bin/bash ./script.sh $(Agent.BuildDirectory) $(MEI_HOST) $(MEI_KEY)
   displayName: 'run script'
-  
-#- script: |
-#    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-#  displayName: 'Install homebrew'
-
-#- script: 
-#    /opt/homebrew/bin/brew install pandoc
-#  displayName: 'Install pandoc'

@@ -10,10 +10,10 @@ pool:
 #  vmImage: macOS-latest
   name: mac
 
-# strategy:
-#   matrix:
-#     Python311:
-#       python.version: '3.11'
+strategy:
+  matrix:
+    Python311:
+      python.version: '3.11'
 
 # steps:
 # - task: UsePythonVersion@0

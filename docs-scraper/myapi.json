@@ -1,14 +1,14 @@
 {
   "index_uid": "myapi",
   "scrape_start_urls": false,
-  "allowed_domains": ["nb.on-test-jhub.com:7700"],
+  "allowed_domains": ["nb.on-test-jhub.com:8080"],
   "start_urls": [
-      "http://nb.on-test-jhub.com:7700/myapi/"
+      "http://nb.on-test-jhub.com:8080/myapi/"
   ],
   "stop_urls": [
-      "http://nb.on-test-jhub.com:7700/myapi/_sources/",
-      "http://nb.on-test-jhub.com:7700/myapi/genindex.html",
-      "http://nb.on-test-jhub.com:7700/myapi/py-modindex.html"
+      "http://nb.on-test-jhub.com:8080/myapi/_sources/",
+      "http://nb.on-test-jhub.com:8080/myapi/genindex.html",
+      "http://nb.on-test-jhub.com:8080/myapi/py-modindex.html"
   ],
   "selectors": {
       "default": {

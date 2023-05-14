@@ -26,13 +26,14 @@ echo =========================
 echo set env vars
 echo =========================
  
-cd docs-scraper
-git clone https://github.com/meilisearch/docs-scraper
-cd docs-scraper
-pip install pipenv
-pipenv install
-ls
-pipenv run ./docs_scraper ../myapi.json
+cd /Users/on/docs-scraper
+source .venv/bin/activate
+#git clone https://github.com/meilisearch/docs-scraper
+#cd docs-scraper
+#pip install pipenv
+#pipenv install
+#ls
+pipenv run ./docs_scraper $1/s/docs-scraper/myapi.json
 echo =========================
 echo docs scraping
 echo =========================

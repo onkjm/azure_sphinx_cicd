@@ -10,21 +10,21 @@ pool:
 #  vmImage: macOS-latest
   name: mac
 
-strategy:
-  matrix:
-    Python311:
-      python.version: '3.11'
+# strategy:
+#   matrix:
+#     Python311:
+#       python.version: '3.11'
 
-steps:
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '$(python.version)'
-  displayName: 'Use Python $(python.version)'
+# steps:
+# - task: UsePythonVersion@0
+#   inputs:
+#     versionSpec: '$(python.version)'
+#   displayName: 'Use Python $(python.version)'
 
-- script: |
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
-  displayName: 'Install dependencies'
+# - script: |
+#     python -m pip install --upgrade pip
+#     pip install -r requirements.txt
+#   displayName: 'Install dependencies'
 
 - script: |
     /bin/bash ./script.sh $(Agent.BuildDirectory) $(MEI_HOST) $(MEI_KEY)

@@ -1,7 +1,15 @@
 echo =========================
+echo install dependencies
+echo =========================
+python3 -m venv .venv
+source .venv/bin/activate
+pip install requirements.txt
+
+echo =========================
 echo make html
 echo =========================
 make html
+deactivate
 
 echo =========================
 echo deploy html
